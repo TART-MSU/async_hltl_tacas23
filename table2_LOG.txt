@@ -1,0 +1,85 @@
+
+
+===== SpecExcu_v2 =====
+
+------( async_genmodel starts )------
+
+(clean up previous generated files..)
+
+[ Running with find witness mode ]
+[ Running with multi model mode ]
+
+============ Translate NuSMV Model(s) ============
+All state variables:  ['proc1.arrB_pos0', 'var_Y', 'proc1.arrA_pos3', 'proc1.line', 'proc1.k', 'proc2.arrA_pos3', 'proc1.arrA_pos2', 'proc1.var_X', 'proc2.var_temp_proc1', 'proc1.var_Z', 'proc2.arrB_pos4', 'proc2.arrB_pos1', 'proc1.arrB_pos2', 'proc1.arrB_pos1', 'proc1.arrA_pos4', 'proc1.var_temp_proc2', 'proc1.halt', 'proc2.k', 'proc2.var_W', 'proc1.arrA_pos0', 'proc2.arrA_pos0', 'proc2.arrB_pos2', 'proc2.halt', 'proc2.var_X', 'proc1.arrB_pos3', 'proc2.var_Z', 'proc2.mask', 'proc1.var_W', 'offset', 'proc1.var_temp_proc1', 'proc2.line', 'var_size', 'proc1.mask', 'proc2.arrB_pos0', 'proc1.arrA_pos1', 'proc2.arrA_pos2', 'proc2.arrB_pos3', 'proc2.arrA_pos1', 'proc2.var_temp_proc2', 'proc1.arrB_pos4', 'proc2.arrA_pos4']
+Total number of transtitions: 144
+
+All state variables:  ['proc1.arrB_pos0', 'var_Y', 'proc1.arrA_pos3', 'proc1.line', 'proc1.k', 'proc2.arrA_pos3', 'proc1.arrA_pos2', 'proc1.var_X', 'proc2.var_temp_proc1', 'proc1.var_Z', 'proc2.arrB_pos4', 'proc2.arrB_pos1', 'proc1.arrB_pos2', 'proc1.arrB_pos1', 'proc1.arrA_pos4', 'proc1.var_temp_proc2', 'proc1.halt', 'proc2.k', 'proc2.var_W', 'proc1.arrA_pos0', 'proc2.arrA_pos0', 'proc2.arrB_pos2', 'proc2.halt', 'proc2.var_X', 'proc1.arrB_pos3', 'proc2.var_Z', 'proc2.mask', 'proc1.var_W', 'offset', 'proc1.var_temp_proc1', 'proc2.line', 'var_size', 'proc1.mask', 'proc2.arrB_pos0', 'proc1.arrA_pos1', 'proc2.arrA_pos2', 'proc2.arrB_pos3', 'proc2.arrA_pos1', 'proc2.var_temp_proc2', 'proc1.arrB_pos4', 'proc2.arrA_pos4']
+Total number of transtitions: 168
+
+
+============ Translate HyperLTL Formula ============
+user input formula: exists A. exists B. F(proc1-halt[A] /\ proc2-halt[A] /\ proc1-halt[B] /\ proc2-halt[B])
+/\ G(*var_Y[A] = var_Y[B]* /\ *var_size[A] = var_size[B]* /\ *offset[A] =  offset[B]*)
+
+(detect -find flag, use original formula.)
+parsed formula: F(proc1-halt_A/\proc2-halt_A/\proc1-halt_B/\proc2-halt_B)
+/\G(((var_Y_0_A<->var_Y_0_B)/\(var_Y_1_A<->var_Y_1_B)/\(var_Y_2_A<->var_Y_2_B))/\((var_size_0_A<->var_size_0_B)/\(var_size_1_A<->var_size_1_B)/\(var_size_2_A<->var_size_2_B))/\((offset_0_A<->offset_0_B)/\(offset_1_A<->offset_1_B)))
+
+
+--------------- Summary of Model(s) Info ---------------
+|  Bound k:     7
+|  Semantics:   hpes
+|  Models:      ccs22_cases/speculative_execution/se_v2_nse.smv ,  ccs22_cases/speculative_execution/se_v2_se.smv
+-------------------------------------------------------------- 
+
+
+
+============ Unrolling with genQBF ============
+generating QBF BMC...
+Time elapsed: 0.530 secs (calling nnf)
+Time elapsed: 0.588 secs (calling formula_to_circuit)
+Time elapsed: 0.779 secs (printing circuit)
+Time elapsed: 1.947 secs (done)
+
+------(END async_genmodel)------
+
+diameter_tau1_proc1:  3
+diameter_tau1_proc2:  6
+diameter_tau2_proc1:  3
+diameter_tau2_proc2:  6
+len_longest_trajectory:  9
+time elapsed:  0.92 s (variable setup...)
+total number of options: 636
+time elapsed:  0.957 s (building trajectory options...)
+time elapsed:  0.957 s (building tau1 expressions...)
+time elapsed:  0.958 s (building tau2 expressions...)
+time elapsed:  0.96 s (building tau1 QCIR...)
+time elapsed:  0.961 s (building tau2 QCIR...)
+[498622, 498633, 498644, 498655, 498666, 498668, 498679, 498690, 498701, 498712, 498723, 498725, 498736, 498738, 498740, 498751, 498762, 498773, 498784, 498795, 498806, 498808, 498819, 498821, 498823, 498834, 498836, 498838, 498840, 498851, 498853, 498864, 498866, 498877, 498879, 498881, 498892, 498894, 498896, 498898, 498909, 498911, 498913, 498924, 498926, 498937, 498939, 498941, 498952, 498954, 498956, 498958, 498969, 498971, 498973, 498975, 498977, 498979, 498981, 498983, 498985, 498987, 498989, 498991, 498993, 498995, 498997, 498999, 499001, 499003, 499005, 499007, 499009, 499011, 499013, 499015, 499017, 499019, 499021, 499023, 499025, 499027, 499029, 499031, 499033, 499035, 499037]
+time elapsed:  0.961 s (building always formula...)
+time elapsed:  0.965 s (building tau1 exclusive constraints...)
+time elapsed:  0.966 s (building tau2 exclusive constraints...)
+time elapsed:  0.966 s (building tau1 terminating constraints.)
+time elapsed:  0.966 s (building tau2 terminating constraints.)
+time elapsed:  0.966 s (building tau1 moving constraints...)
+time elapsed:  0.966 s (building tau2 moving constraints...)
+gate M1: 1808
+gate M2: 230295
+gate old varphi: 496413
+solving QBF...
+Parsing took 0.191394
+Reencoding of circuit took 0.078673
+Preprocessing took 0.600731
+Building abstraction took 0.064421
+Solving took 0.005673
+
+Detailed solving statistics:
+Statistics for existential level 1
+    Average: 0.005670
+    Total  : 0.005670
+    Min/Max: 0.005670/0.005670
+    Count  : 1
+    Histogram: 0.1ms: 0 0 0; 0.8ms: 0 0 0; 6.4ms: 1
+r UNSAT
+No mapping.
+no output to format.
